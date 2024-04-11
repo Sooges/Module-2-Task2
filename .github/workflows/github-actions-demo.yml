@@ -1,7 +1,7 @@
 name: GitHubActions-demo
 env:
   APPLICATION_NAME   : "MyFlask"
-  DRPLOY_PACKAGE_NAME: "flask-deploy-ver-${{ github.sha }}"
+  DEPLOY_PACKAGE_NAME: "flask-deploy-ver-${{ github.sha }}"
 
 on:
   push:
@@ -15,6 +15,12 @@ jobs:
     steps:
     - name: Print Helo World 1
       run: echo "Helo World 1"
+    
+    - name: Execure few commands
+      run: |
+        echo "Hello Message 0"
+        echo "Hello Message 1"
+        echo "Application name: ${{env.APPLICATION_NAME }}"
 
   my_deploy: 
     runs-on: ubuntu-latest
@@ -23,4 +29,7 @@ jobs:
     steps:
     - name: Print Hello World 2
       run: echo "Hello World 2" 
+      
+    - name: Printing Deployment package
+      run: echo "Deploy Package name is ${{env.DEPLOY_PACKAGE_NAME }}"
     
