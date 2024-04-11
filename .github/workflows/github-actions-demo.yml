@@ -1,0 +1,23 @@
+name: GitHubActions-demo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  my_testing:
+    runs-on: ubuntu-lateste
+
+    steps:
+    - name: Print Helo World 1
+      run: echo "Helo World 1"
+
+  my_deploy: 
+    runs-on: ubuntu-lateste
+    needs: [my_testing]
+
+    steps:
+    - name: Print Hello World 2
+      run: echo "Hello World 2" 
+    
