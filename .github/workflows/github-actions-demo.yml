@@ -21,26 +21,7 @@ jobs:
         echo "Hello Message 0"
         echo "Hello Message 1"
         echo "Application name: ${{env.APPLICATION_NAME }}"
-    - name: checkout repo
-      uses: actions/checkout@v1
-    - name: set up Java and Maven
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: maven
-    - name: run tests
-      run: mvn test
         
-  prepare-environment:
-    runs-on: self-hosted
-    needs: my_testing
-    steps:
-      - name: Stop and remove containers, networks
-        run: docker-compose down
-      - name: Remove unused data
-        run: docker system prune -a -f
-  
   my_deploy: 
     runs-on: ubuntu-latest
     needs: [my_testing]
@@ -51,9 +32,3 @@ jobs:
       
      - name: Printing Deployment package
        run: echo "Deploy Package name is ${{env.DEPLOY_PACKAGE_NAME }}"
-      
-     - name: checkout repo
-       uses: actions/checkout@v3
-     - name: docker-compose
-       run: docker-compose up -d
-    
