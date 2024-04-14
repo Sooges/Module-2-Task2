@@ -16,13 +16,13 @@ jobs:
     - name: Print Helo World 1
       run: echo "Helo World 1"
     
-    - name: Execure few commands
+    - name: Execute few commands
       run: |
         echo "Hello Message 0"
         echo "Hello Message 1"
         echo "Application name: ${{env.APPLICATION_NAME }}"
-         - name: checkout repo
-        uses: actions/checkout@v1
+    - name: checkout repo
+      uses: actions/checkout@v1
     - name: set up Java and Maven
       uses: actions/setup-java@v1
       with:
