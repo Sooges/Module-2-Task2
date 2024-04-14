@@ -30,6 +30,5 @@ jobs:
     - name: Print Hello World 2
       run: echo "Hello World 2" 
       
-    - name: Printing Deployment package
-      run: echo "Deploy Package name is ${{env.DEPLOY_PACKAGE_NAME }}"
+   
     
